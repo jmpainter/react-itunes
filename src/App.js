@@ -12,6 +12,7 @@ function App() {
       .then(data => setAlbums(data.feed.entry))
       .catch(error => console.error(error));
   }, []);
+
   return (
     <div>
       <Router>

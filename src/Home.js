@@ -15,13 +15,13 @@ export default function Home({ albums }) {
 
   return (
     <div>
-      <h1>React Itunes</h1>
+      <h1>React ITunes</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="search" />
         <input id="search" value={term} onChange={changeTerm} />
         <button type="submit">Search</button>
       </form>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", maxWidth: "90%", flexWrap: "wrap" }}>
         {albums.map(album => (
           <Card album={album} />
         ))}
