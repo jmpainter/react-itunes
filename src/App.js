@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./Home";
+import "./App.css";
 
 function App() {
+  const [albums, setAlbums] = useState(undefined);
+
+  useEffect(() => {
+    fetch("https://itunes.apple.com/us/rss/topalbums/limit=100/json")
+      .then(res => res.json())
+      .then(data => setAlbums(data.feed.entry))
+      .catch(error => console.error(error));
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Route
+          exact
+          path="/"
+          render={props => <Home albums={albums} {...props} />}
+        />
+      </Router>
     </div>
   );
 }
