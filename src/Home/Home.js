@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Card from "../Card/Card";
 import { Input, Form } from "./styles";
+import { connect } from "react-redux";
 
-export default function Home({ albums }) {
+function Home({ albums }) {
   const [filter, setfilter] = useState("");
 
   const changeFilter = event => {
@@ -41,3 +42,9 @@ export default function Home({ albums }) {
 Home.defaultProps = {
   albums: []
 };
+
+const mapStateToProps = state => ({
+  albums: state.albums
+});
+
+export default connect(mapStateToProps)(Home);

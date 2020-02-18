@@ -1,30 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
 import Home from "../Home/Home";
 import { Container } from "./styles";
+import { getAlbums } from "../redux/actions";
 import "./App.css";
 
-function App() {
-  const [albums, setAlbums] = useState(undefined);
-
+function App({ dispatch }) {
   useEffect(() => {
-    fetch("https://itunes.apple.com/us/rss/topalbums/limit=100/json")
-      .then(res => res.json())
-      .then(data => setAlbums(data.feed.entry))
-      .catch(error => console.error(error));
-  }, []);
+    dispatch(getAlbums());
+  }, [dispatch]);
 
   return (
     <Container>
       <Router>
-        <Route
-          exact
-          path="/"
-          render={props => <Home albums={albums} {...props} />}
-        />
+        <Route exact path="/" component={Home} />
       </Router>
     </Container>
   );
 }
 
-export default App;
+export default connect()(App);
