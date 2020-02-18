@@ -1,32 +1,38 @@
 import React, { useState } from "react";
 import Card from "../Card/Card";
-import { Button } from "./styles";
-import { Input } from "./styles";
+import { Input, Form } from "./styles";
 
 export default function Home({ albums }) {
-  const [term, setTerm] = useState("");
+  const [filter, setfilter] = useState("");
 
-  const changeTerm = event => {
-    setTerm(event.target.value);
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    console.log(term);
+  const changeFilter = event => {
+    setfilter(event.target.value.toLowerCase());
   };
 
   return (
     <div>
       <h1>React ITunes</h1>
-      <form onSubmit={handleSubmit} style={{ marginBottom: "10px" }}>
-        <label htmlFor="search" />
-        <Input id="search" value={term} onChange={changeTerm} />
-        <Button type="submit">Search</Button>
-      </form>
+      <Form>
+        <label htmlFor="search"> Filter: </label>
+        <Input id="filter" value={filter} onChange={changeFilter} />
+      </Form>
       <div style={{ display: "flex", maxWidth: "90%", flexWrap: "wrap" }}>
-        {albums.map(album => (
-          <Card album={album} />
-        ))}
+        {albums
+          .filter(album => {
+            if (filter !== "") {
+              if (album["im:name"].label.toLowerCase().includes(filter)) {
+                return true;
+              } else if (album["im:artist"].label.includes(filter)) {
+                return true;
+              } else {
+                return false;
+              }
+            }
+            return true;
+          })
+          .map(album => (
+            <Card album={album} />
+          ))}
       </div>
     </div>
   );

@@ -34,3 +34,7 @@ export const Input = styled.input`
     text-align: left;
   }
 `;
+
+export const Form = styled.form`
+  margin: 10px 0px;
+`;

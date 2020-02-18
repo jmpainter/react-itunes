@@ -8,6 +8,6 @@ export const CardContainer = styled.div`
 export const Title = styled.p`
   font-size: 18px;
   font-weight: 600;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: 7px;
 `;
