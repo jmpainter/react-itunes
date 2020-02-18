@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./Home";
+import Home from "../Home/Home";
+import { Container } from "./styles";
 import "./App.css";
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <Container>
       <Router>
         <Route
           exact
@@ -22,7 +23,7 @@ function App() {
           render={props => <Home albums={albums} {...props} />}
         />
       </Router>
-    </div>
+    </Container>
   );
 }
 

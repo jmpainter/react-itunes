@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import Card from "./Card";
+import Card from "../Card/Card";
+import { Button } from "./styles";
+import { Input } from "./styles";
 
 export default function Home({ albums }) {
   const [term, setTerm] = useState("");
@@ -16,10 +18,10 @@ export default function Home({ albums }) {
   return (
     <div>
       <h1>React ITunes</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ marginBottom: "10px" }}>
         <label htmlFor="search" />
-        <input id="search" value={term} onChange={changeTerm} />
-        <button type="submit">Search</button>
+        <Input id="search" value={term} onChange={changeTerm} />
+        <Button type="submit">Search</Button>
       </form>
       <div style={{ display: "flex", maxWidth: "90%", flexWrap: "wrap" }}>
         {albums.map(album => (
