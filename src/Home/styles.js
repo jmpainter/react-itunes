@@ -35,6 +35,11 @@ export const Input = styled.input`
   }
 `;
 
+export const Error = styled.p`
+  color: red;
+  margin: 10px 0;
+`;
+
 export const Form = styled.form`
   margin: 10px 0px;
 `;

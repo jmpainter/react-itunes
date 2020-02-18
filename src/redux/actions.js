@@ -17,6 +17,6 @@ export const getAlbums = () => {
     return fetch("https://itunes.apple.com/us/rss/topalbums/limit=100/json")
       .then(res => res.json())
       .then(data => dispatch(setAlbums(data.feed.entry)))
-      .catch(error => dispatch(setError(error)));
+      .catch(error => dispatch(setError(error.message)));
   };
 };
