@@ -15,8 +15,8 @@ export default function Card({ album }) {
         <Title>{album["im:name"].label}</Title>
       </a>
       <p>{album["im:artist"].label}</p>
-      <p>{album["category"].attributes.term.label}</p>
-      <p>
+      <p>{album["category"].attributes.term}</p>
+      <p data-testid="release-date">
         {album["im:releaseDate"].label.slice(
           0,
           album["im:releaseDate"].label.indexOf("T")

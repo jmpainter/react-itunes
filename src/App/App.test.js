@@ -3,7 +3,7 @@ import { render, cleanup, waitForElement } from "@testing-library/react";
 import { Provider } from "react-redux";
 import App from "./App";
 import store from "../redux/store";
-import moviesData from "../utils/movieData";
+import albumsData from "../utils/albumsData";
 
 global.fetch = require("jest-fetch-mock");
 
@@ -12,7 +12,7 @@ afterEach(() => {
 });
 
 test("<App />", async () => {
-  fetch.mockResponseOnce(JSON.stringify(moviesData));
+  fetch.mockResponseOnce(JSON.stringify(albumsData));
   const { getAllByTestId } = render(
     <Provider store={store}>
       <App />
