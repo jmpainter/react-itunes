@@ -3,7 +3,7 @@ import Card from "../Card/Card";
 import { Input, Form, Error } from "./styles";
 import { connect } from "react-redux";
 
-function Home({ albums, error }) {
+export function Home({ albums, error }) {
   const [filter, setfilter] = useState("");
 
   const changeFilter = event => {
@@ -13,12 +13,19 @@ function Home({ albums, error }) {
     <div>
       <h1>React ITunes</h1>
       {error !== "" ? (
-        <Error>There has been an error with retrieving the albums</Error>
+        <Error data-testid="albums-error">
+          There has been an error with retrieving the albums
+        </Error>
       ) : (
         <>
           <Form>
-            <label htmlFor="search"> Filter: </label>
-            <Input id="filter" value={filter} onChange={changeFilter} />
+            <label htmlFor="filter"> Filter: </label>
+            <Input
+              id="filter"
+              value={filter}
+              onChange={changeFilter}
+              data-testid="filter-input"
+            />
           </Form>
           <div style={{ display: "flex", maxWidth: "90%", flexWrap: "wrap" }}>
             {albums
