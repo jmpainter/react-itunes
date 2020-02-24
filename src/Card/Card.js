@@ -2,7 +2,6 @@ import React from "react";
 import { CardContainer, Title } from "./styles";
 
 export default function Card({ album }) {
-  console.log(album);
   return (
     <CardContainer>
       <a
@@ -10,6 +9,7 @@ export default function Card({ album }) {
         target="_blank"
         rel="noopener noreferrer"
         style={{ textDecoration: "none", color: "white" }}
+        data-testid="album-link"
       >
         <img src={album["im:image"][2].label} alt={album["im:name"].label} />
         <Title>{album["im:name"].label}</Title>

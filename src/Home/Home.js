@@ -9,7 +9,6 @@ function Home({ albums, error }) {
   const changeFilter = event => {
     setfilter(event.target.value.toLowerCase());
   };
-
   return (
     <div>
       <h1>React ITunes</h1>
@@ -36,7 +35,7 @@ function Home({ albums, error }) {
                 return true;
               })
               .map(album => (
-                <Card album={album} />
+                <Card key={album.id.attributes["im:id"]} album={album} />
               ))}
           </div>
         </>

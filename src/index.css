@@ -1,3 +1,5 @@
+/* css reset */
+
 html,
 body,
 div,
@@ -140,8 +142,4 @@ h1 {
 h2 {
   font-size: 18px;
   font-weight: 400;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
